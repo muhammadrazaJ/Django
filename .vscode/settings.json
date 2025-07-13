@@ -1,0 +1,9 @@
+{
+    "CodeGPT.apiKey": "CodeGPT Plus Beta"
+}
+{
+  "python.formatting.provider": "black",       // or "autopep8"
+  "editor.formatOnSave": true,                 // optional: auto-format when saving
+  "editor.tabSize": 4,
+  "editor.insertSpaces": true
+}
