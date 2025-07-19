@@ -5,20 +5,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student List</title>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-    <h1>Student List</h1>
-    <a href="{% url 'student_create' %}">Add New Student</a>
-    <ul>
-        {% for student in students %}
-            <li>
-                {{ student.name }} ({{ student.email }}) - Age: {{ student.age }}
-                <a href="{% url 'student_update' student.pk %}">Edit</a>
-                <a href="{% url 'student_delete' student.pk %}">Delete</a>
-            </li>
-        {% empty %}
-            <li>No students found.</li>
-        {% endfor %}
-    </ul>
+<body class="bg-gray-100 min-h-screen font-sans">
+    <div class="max-w-4xl mx-auto py-10 px-6">
+        <div class="flex items-center justify-between mb-6">
+            <h1 class="text-3xl font-bold text-gray-800">Student List</h1>
+            <a href="{% url 'student_create' %}" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">Add New Student</a>
+        </div>
+
+        <div class="bg-white shadow rounded-lg p-6">
+            <ul class="divide-y divide-gray-200">
+                {% for student in students %}
+                    <li class="py-4 flex items-center justify-between">
+                        <div>
+                            <p class="text-lg font-medium text-gray-900">{{ student.name }} <span class="text-sm text-gray-500">({{ student.email }})</span></p>
+                            <p class="text-sm text-gray-600">Age: {{ student.age }}</p>
+                        </div>
+                        <div class="flex space-x-2">
+                            <a href="{% url 'student_update' student.pk %}" class="text-blue-600 hover:underline">Edit</a>
+                            <a href="{% url 'student_delete' student.pk %}" class="text-red-600 hover:underline">Delete</a>
+                        </div>
+                    </li>
+                {% empty %}
+                    <li class="py-4 text-gray-500">No students found.</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
 </body>
 </html>
